@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.services {
+    padding: 100px;
+    gap: 100px;
+}
+
+.boxes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background-color: rgb(128, 72, 218);
+    grid-template-rows: 
+}
