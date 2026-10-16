@@ -111,6 +111,12 @@ nav a {
     padding-block: 4rem;
 }
 
+.carousel-inner {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 30px;
+}
+
 .texto-depoimento {
     color: #3b2612;
     font-weight: bold;
@@ -124,10 +130,17 @@ nav a {
     padding-block: 4rem;
 }
 
+#accordionFlushExample {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 30px;
+}
+
 footer{
     display: flex;
     justify-content:center;
     align-items: center;
     padding: 1rem 1.5rem;
     background-color: var(--cor-footer);
+    color: var(--cor-texto);
 }
