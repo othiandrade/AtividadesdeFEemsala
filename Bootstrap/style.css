@@ -5,13 +5,13 @@
 }
 
 :root {
-    --cor-fundo: #00a9e6;
-    --cor-header: #012bfc;
-    --cor-botao: #020004;
-    --cor-titulo: #FCFDAF;
-    --cor-subtitulo: #FCFDAF;
+    --cor-fundo: #d88f40;
+    --cor-header: #8a5925;
+    --cor-botao: #8a5925;
+    --cor-titulo: #020004;
+    --cor-subtitulo: #020004;
     --cor-texto: #f9faff;
-    --cor-footer: #012bfc;
+    --cor-footer: #8a5925;
 }
 
 html {
@@ -20,17 +20,22 @@ html {
 
 body {
     background-color: var(--cor-fundo);
-    color:var(--cor-texto);
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+h1, h2 {
+    color: var(--cor-titulo);
 }
 
 header {
     padding: 16px;
+    background-color: var(--cor-header);
 }
 
 .limite{
-    max-width: 1100px;
-    margin-inline:auto;
-
+    max-width: 1320px;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
 }
 
 header .limite {
@@ -79,21 +84,23 @@ nav a {
     justify-content:space-between;
     align-items: center;
     gap: 20px;
-    color:#020004;
-    padding: 4rem 1.5rem;
+    padding-block: 4rem;
 }
 
-.container-hero img{
-    max-width: 100%;
+.container-hero img {
+    max-width: 550px;
     height: auto;
-    flex:1;
+    border-radius: 20px;
 }
 
 .conteudo-hero {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    flex: 1;
+}
+
+.conteudo-hero p {
+    color: var(--cor-texto)
 }
 
 #depoimentos {
@@ -101,8 +108,12 @@ nav a {
     justify-content:center;
     align-items: center;
     flex-direction: column;
-    color:#020004;
-    padding: 4rem 1.5rem;
+    padding-block: 4rem;
+}
+
+.texto-depoimento {
+    color: #3b2612;
+    font-weight: bold;
 }
 
 #faq {
@@ -110,14 +121,13 @@ nav a {
     justify-content:center;
     align-items: center;
     flex-direction: column;
-    color:#020004;
-    padding: 4rem 1.5rem;
+    padding-block: 4rem;
 }
 
 footer{
     display: flex;
     justify-content:center;
     align-items: center;
-    color:#020004;
     padding: 1rem 1.5rem;
+    background-color: var(--cor-footer);
 }
