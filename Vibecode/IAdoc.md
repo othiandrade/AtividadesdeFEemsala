@@ -30,8 +30,15 @@ NÃO inserir imagens reais: use placeholders com src vazio ou "#" e alt descriti
 
 # AJUSTES
 
+1.
 Ajuste “Tame Impala” abaixo do nav para não ficar sendo sobreposto pela seção seguinte.
 
 Faça com que os links dos sites no código abram em outra página.
 
 Faça com que todos os botões de “ingressos” levem a: https://www.tameimpala.com/
+
+2.
+
+no nav faça com que a aparência do "sobre" "discografia" "turnê" e "galeria" também tenham o mesmo visual do "Ouvir agora"
+
+dê um destaque no "psicodelia", 'synth-pop", 'Rock" e "Desde 2007"

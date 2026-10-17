@@ -33,7 +33,7 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
-window.matchMedia('(min-width: 48rem)').addEventListener('change', (event) => {
+window.matchMedia('(min-width: 64rem)').addEventListener('change', (event) => {
   if (event.matches) setMenu(false);
 });
 
