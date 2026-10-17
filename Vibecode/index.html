@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth scroll-pt-24 motion-reduce:scroll-auto">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ✏️ AÇÃO: edite o título e a descrição da página (aparecem na aba e no Google) -->
+    <title>Tame Impala — Página de fã (não oficial)</title>
+    <meta name="description" content="Landing page não oficial, feita por fã, sobre o Tame Impala, o projeto psicodélico de Kevin Parker.">
+
+    ✏️ AÇÃO: Google Fonts — descomente as 3 linhas abaixo para carregar a Fraunces
+         (com os eixos opsz, wght e SOFT usados nos títulos). Sem isso a página usa uma serif genérica.
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,100..900,0..100;1,9..144,100..900,0..100&display=swap" rel="stylesheet">
+   
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      @theme {
+        /* Remove a paleta padrão do Tailwind: só os tokens abaixo existem */
+        --color-*: initial;
+
+        /* Cores */
+        --color-light: #F3EFE9;      /* fundo principal */
+        --color-card: #C8B6A1;       /* superfície dos cards */
+        --color-muted: #8F8477;      /* textos secundários, bordas, detalhes */
+        --color-earth: #3D170D;      /* texto principal e seções escuras */
+        --color-terracotta: #D74D2E; /* destaque, hover, títulos grandes */
+        --color-crimson: #922211;    /* botões e CTAs */
+
+        /* Tipografia */
+        --font-display: 'Fraunces', serif;
+        --font-body: 'Fraunces', serif;
+
+        /* Bordas */
+        --radius-card: 24px;
+
+        /* Animações customizadas */
+        --animate-blob: blob 22s ease-in-out infinite;
+        --animate-morph: morph 16s ease-in-out infinite;
+        --animate-float: float 9s ease-in-out infinite;
+        --animate-spin-slow: spin-slow 40s linear infinite;
+        --animate-marquee: marquee 45s linear infinite;
+        --animate-scroll-hint: scroll-hint 2.4s ease-in-out infinite;
+
+        @keyframes blob {
+          0%, 100% { transform: translate(0, 0) scale(1); border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; }
+          33%      { transform: translate(8%, -6%) scale(1.08); border-radius: 70% 30% 46% 54% / 30% 39% 61% 70%; }
+          66%      { transform: translate(-6%, 8%) scale(0.94); border-radius: 30% 70% 38% 62% / 62% 33% 67% 38%; }
+        }
+        @keyframes morph {
+          0%, 100% { border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%; }
+          50%      { border-radius: 40% 60% 45% 55% / 60% 40% 60% 40%; }
+        }
+        @keyframes float {
+          0%, 100% { transform: translateY(0); }
+          50%      { transform: translateY(-12px); }
+        }
+        @keyframes spin-slow {
+          to { transform: rotate(360deg); }
+        }
+        @keyframes marquee {
+          from { transform: translateX(0); }
+          to   { transform: translateX(-50%); }
+        }
+        @keyframes scroll-hint {
+          0%, 100% { transform: translateY(0); opacity: 1; }
+          50%      { transform: translateY(8px); opacity: .4; }
+        }
+      }
+
+      /* Títulos: eixo SOFT no máximo + optical size grande = ar retrô anos 70 */
+      @utility font-soft {
+        font-variation-settings: "SOFT" 100, "opsz" 144;
+      }
+
+      /* Granulação via SVG (feTurbulence em tons de cinza) */
+      @utility bg-grain {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      }
+
+      @layer base {
+        body { font-optical-sizing: auto; }
+        ::selection { background-color: var(--color-terracotta); color: var(--color-light); }
+      }
+    </style>
+
+    <!--
+      ===========================================================
+      COMPONENTES-BASE (copie exatamente estas classes)
+      -----------------------------------------------------------
+      Botão primário:
+        inline-flex items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0
+      Botão secundário (seção clara):
+        inline-flex items-center justify-center gap-2 rounded-full border-2 border-earth px-6 py-3 font-semibold text-earth transition duration-500 ease-out hover:bg-earth hover:text-light focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none
+        (seção escura: troque border-earth/text-earth/hover:bg-earth/hover:text-light por border-light/text-light/hover:bg-light/hover:text-earth)
+      Tag (seção clara):
+        inline-flex items-center gap-2 rounded-full border border-earth/20 px-4 py-1 text-sm font-medium text-earth
+        (seção escura: border-light/25 text-light)
+      Rótulo numerado + Título de seção:
+        rótulo: flex items-center gap-4 border-b border-current/15 pb-4 text-sm uppercase tracking-widest
+        título: font-display font-soft text-4xl font-black leading-tight md:text-5xl lg:text-6xl
+      Card:
+        group flex flex-col gap-4 rounded-card bg-card p-4 text-earth shadow-lg shadow-earth/10 transition duration-700 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-terracotta/30 motion-reduce:transition-none motion-reduce:hover:translate-y-0
+      ===========================================================
+    -->
+</head>
+<body class="bg-light font-body font-normal text-earth antialiased">
+
+    <!-- Granulação leve sobre a página inteira -->
+    <div aria-hidden="true" class="bg-grain pointer-events-none fixed inset-0 z-[60] opacity-15 mix-blend-overlay"></div>
+
+    <a href="#conteudo" class="sr-only rounded-full bg-crimson px-6 py-3 font-semibold text-light focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[70] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta">
+        Pular para o conteúdo
+    </a>
+
+    <!-- ===================== 1. NAVBAR ===================== -->
+    <header data-navbar class="fixed inset-x-0 top-0 z-50 border-b border-earth/10 bg-light/80 backdrop-blur-md transition-shadow duration-500 data-[scrolled=true]:shadow-lg data-[scrolled=true]:shadow-earth/10">
+        <nav aria-label="Navegação principal" class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4 md:px-8">
+            <!-- ✏️ AÇÃO: logo em texto (não usar o logo oficial da banda) -->
+            <a href="#inicio" class="group flex items-center gap-2 rounded-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta" aria-label="Tame Impala, voltar ao início">
+                <span aria-hidden="true" class="size-6 rounded-full bg-linear-to-br from-terracotta via-crimson to-earth transition duration-700 group-hover:rotate-180 motion-reduce:transition-none"></span>
+                <span class="font-display font-soft text-xl font-black tracking-tight">Tame Impala</span>
+                <span class="hidden text-xs text-earth/70 sm:inline">(fã)</span>
+            </a>
+
+            <ul class="hidden items-center gap-8 md:flex">
+                <li><a href="#sobre" data-nav-link class="rounded-full py-2 font-medium transition-colors duration-300 hover:text-crimson focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta aria-[current=true]:text-crimson">Sobre</a></li>
+                <li><a href="#discografia" data-nav-link class="rounded-full py-2 font-medium transition-colors duration-300 hover:text-crimson focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta aria-[current=true]:text-crimson">Discografia</a></li>
+                <li><a href="#turne" data-nav-link class="rounded-full py-2 font-medium transition-colors duration-300 hover:text-crimson focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta aria-[current=true]:text-crimson">Turnê</a></li>
+                <li><a href="#galeria" data-nav-link class="rounded-full py-2 font-medium transition-colors duration-300 hover:text-crimson focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta aria-[current=true]:text-crimson">Galeria</a></li>
+            </ul>
+
+            <div class="flex items-center gap-2">
+                <!-- ✏️ AÇÃO: troque o href pelo link do artista no Spotify/Apple Music -->
+                <a href="#discografia" aria-label="Ouvir agora: ir para a discografia" class="hidden items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:inline-flex">
+                    Ouvir agora
+                </a>
+
+                <button type="button" data-menu-toggle aria-controls="menu-mobile" aria-expanded="false" aria-label="Abrir menu" class="inline-flex size-12 items-center justify-center rounded-full border-2 border-earth/20 transition duration-300 hover:border-earth focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta md:hidden">
+                    <svg data-icon-open class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h10"/></svg>
+                    <svg data-icon-close class="hidden size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Menu mobile -->
+        <div id="menu-mobile" class="hidden border-t border-earth/10 md:hidden">
+            <ul class="flex flex-col gap-2 px-6 py-6">
+                <li><a href="#sobre" data-menu-link class="block rounded-card px-4 py-3 font-display font-soft text-2xl font-bold transition-colors hover:bg-card/50 focus-visible:outline-2 focus-visible:outline-terracotta">Sobre</a></li>
+                <li><a href="#discografia" data-menu-link class="block rounded-card px-4 py-3 font-display font-soft text-2xl font-bold transition-colors hover:bg-card/50 focus-visible:outline-2 focus-visible:outline-terracotta">Discografia</a></li>
+                <li><a href="#turne" data-menu-link class="block rounded-card px-4 py-3 font-display font-soft text-2xl font-bold transition-colors hover:bg-card/50 focus-visible:outline-2 focus-visible:outline-terracotta">Turnê</a></li>
+                <li><a href="#galeria" data-menu-link class="block rounded-card px-4 py-3 font-display font-soft text-2xl font-bold transition-colors hover:bg-card/50 focus-visible:outline-2 focus-visible:outline-terracotta">Galeria</a></li>
+                <li class="pt-4">
+                    <a href="#discografia" data-menu-link aria-label="Ouvir agora: ir para a discografia" class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                        Ouvir agora
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <main id="conteudo">
+
+        <!-- ===================== 2. HERO (claro) ===================== -->
+        <section id="inicio" aria-labelledby="hero-titulo" class="relative overflow-hidden pt-32 pb-16 md:pt-40">
+            <!-- Blobs animados com gradiente -->
+            <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-0">
+                <div class="absolute -top-24 -left-24 size-80 bg-linear-to-br from-terracotta via-crimson to-earth opacity-30 blur-3xl animate-blob motion-reduce:animate-none md:size-96"></div>
+                <div class="absolute top-1/3 -right-32 size-96 bg-linear-to-br from-crimson via-terracotta to-card opacity-30 blur-3xl animate-blob [animation-delay:-8s] motion-reduce:animate-none lg:size-[36rem]"></div>
+                <div class="absolute bottom-0 left-1/3 size-72 bg-linear-to-tr from-card via-terracotta to-crimson opacity-25 blur-3xl animate-blob [animation-delay:-15s] motion-reduce:animate-none"></div>
+            </div>
+
+            <div class="relative mx-auto max-w-6xl px-6 md:px-8">
+                <!-- ✏️ AÇÃO: edite o título principal -->
+                <h1 id="hero-titulo" data-reveal class="font-display font-soft text-7xl leading-none font-black tracking-tight md:text-9xl lg:text-[11rem]">
+                    <span class="block">Tame</span>
+                    <span class="block bg-linear-to-br from-terracotta via-crimson to-earth bg-clip-text text-transparent">Impala</span>
+                </h1>
+
+                <div data-reveal class="mt-8 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+                    <!-- ✏️ AÇÃO: edite o subtítulo -->
+                    <p class="max-w-md text-xl leading-relaxed text-earth/80 md:text-2xl">
+                        Uma viagem psicodélica, de Perth para o mundo, em ondas de sintetizador, fuzz e pôr do sol.
+                    </p>
+                    <ul class="flex flex-wrap gap-2" aria-label="Estilos">
+                        <li class="inline-flex items-center gap-2 rounded-full border border-earth/20 px-4 py-1 text-sm font-medium text-earth">Psicodelia</li>
+                        <li class="inline-flex items-center gap-2 rounded-full border border-earth/20 px-4 py-1 text-sm font-medium text-earth">Synth-pop</li>
+                        <li class="inline-flex items-center gap-2 rounded-full border border-earth/20 px-4 py-1 text-sm font-medium text-earth">Rock</li>
+                        <li class="inline-flex items-center gap-2 rounded-full border border-earth/20 px-4 py-1 text-sm font-medium text-earth">Desde 2007</li>
+                    </ul>
+                </div>
+
+                <div data-reveal class="mt-8 flex flex-wrap gap-4">
+                    <!-- ✏️ AÇÃO: troque o href pelo link do artista no Spotify -->
+                    <a href="#discografia" aria-label="Ouvir agora: ir para a discografia" class="inline-flex items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                        <svg class="size-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg>
+                        Ouvir agora
+                    </a>
+                    <a href="#turne" aria-label="Ver datas da turnê" class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-earth px-6 py-3 font-semibold text-earth transition duration-500 ease-out hover:bg-earth hover:text-light focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none">
+                        Ver turnê
+                    </a>
+                </div>
+
+                <!-- Imagem de destaque + cards flutuantes -->
+                <div data-reveal class="relative mt-16">
+                    <div class="relative aspect-[4/5] overflow-hidden rounded-card bg-linear-to-br from-terracotta via-crimson to-earth shadow-2xl shadow-crimson/30 md:aspect-[16/9]">
+                        <!-- Círculos concêntricos (tipo vinil) atrás da imagem -->
+                        <div aria-hidden="true" class="absolute inset-0 flex items-center justify-center">
+                            <div class="aspect-square w-[80%] rounded-full border border-light/20 animate-spin-slow motion-reduce:animate-none md:w-[45%]">
+                                <div class="m-[12%] aspect-square rounded-full border border-light/20">
+                                    <div class="m-[18%] aspect-square rounded-full border border-light/30 bg-light/10"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ✏️ AÇÃO: imagem do hero — 1920×1080 (16:9). No mobile é recortada em 4:5, então mantenha o assunto centralizado -->
+                        <img src="" alt="Kevin Parker no palco, banhado por luzes laranja e vermelhas" class="absolute inset-0 size-full object-cover">
+                        <div aria-hidden="true" class="absolute inset-0 bg-linear-to-t from-earth/70 via-earth/0 to-earth/0"></div>
+                    </div>
+
+                    <!-- Card flutuante: último álbum -->
+                    <div class="absolute -bottom-8 left-4 flex items-center gap-4 rounded-card border border-light/30 bg-light/80 p-4 shadow-xl shadow-earth/20 backdrop-blur-md animate-float motion-reduce:animate-none md:-left-8 md:bottom-12">
+                        <div class="size-16 shrink-0 overflow-hidden rounded-2xl bg-linear-to-br from-terracotta to-crimson">
+                            <!-- ✏️ AÇÃO: capa do álbum Deadbeat — 300×300 (1:1) -->
+                            <img src="" alt="Capa do álbum Deadbeat" class="size-full object-cover">
+                        </div>
+                        <div>
+                            <p class="text-xs uppercase tracking-widest text-earth/70">Último álbum</p>
+                            <p class="font-display font-soft text-xl font-black">Deadbeat</p>
+                            <p class="text-sm text-earth/80">2025</p>
+                        </div>
+                    </div>
+
+                    <!-- Selo circular -->
+                    <a href="#discografia" aria-label="Ouvir a discografia" class="absolute -top-8 right-4 flex size-24 items-center justify-center rounded-full bg-light/80 text-center shadow-xl shadow-earth/20 backdrop-blur-md transition duration-500 hover:scale-105 hover:bg-light focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none md:right-12 md:size-32">
+                        <span class="font-display font-soft text-sm leading-tight font-black uppercase tracking-widest text-crimson md:text-base">Ouvir<br>agora</span>
+                    </a>
+
+                    <!-- Card flutuante: números -->
+                    <div class="absolute right-4 bottom-12 hidden rounded-card border border-light/20 bg-earth/60 p-6 text-light backdrop-blur-md animate-float [animation-delay:-4s] motion-reduce:animate-none md:block">
+                        <p class="text-xs uppercase tracking-widest text-light/80">Álbuns de estúdio</p>
+                        <p class="font-display font-soft text-6xl font-black">05</p>
+                        <p class="text-sm text-light/80">2010 — 2025</p>
+                    </div>
+                </div>
+
+                <p class="mt-24 flex flex-col items-center gap-2 text-xs uppercase tracking-widest text-earth/70" aria-hidden="true">
+                    Role para explorar
+                    <span class="block h-8 w-px bg-earth/40 animate-scroll-hint motion-reduce:animate-none"></span>
+                </p>
+            </div>
+        </section>
+
+        <!-- Faixa marquee -->
+        <div aria-hidden="true" class="overflow-hidden bg-crimson py-6 text-light">
+            <div class="flex w-max animate-marquee motion-reduce:animate-none">
+                <p class="flex shrink-0 items-center gap-8 pr-8 font-display font-soft text-3xl font-black uppercase md:text-5xl">
+                    <span>Psicodelia</span><span class="text-card">✦</span><span>Sintetizadores</span><span class="text-card">✦</span><span>Perth, Austrália</span><span class="text-card">✦</span><span>Kevin Parker</span><span class="text-card">✦</span><span>Ondas de cor</span><span class="text-card">✦</span>
+                </p>
+                <p class="flex shrink-0 items-center gap-8 pr-8 font-display font-soft text-3xl font-black uppercase md:text-5xl">
+                    <span>Psicodelia</span><span class="text-card">✦</span><span>Sintetizadores</span><span class="text-card">✦</span><span>Perth, Austrália</span><span class="text-card">✦</span><span>Kevin Parker</span><span class="text-card">✦</span><span>Ondas de cor</span><span class="text-card">✦</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- ===================== 3. SOBRE (escuro) ===================== -->
+        <section id="sobre" data-section aria-labelledby="sobre-titulo" class="relative overflow-hidden bg-earth py-16 text-light md:py-24">
+            <div aria-hidden="true" class="pointer-events-none absolute -right-24 top-24 size-96 bg-linear-to-br from-terracotta to-crimson opacity-20 blur-3xl animate-blob motion-reduce:animate-none"></div>
+
+            <div class="relative mx-auto max-w-6xl px-6 md:px-8">
+                <p class="flex items-center gap-4 border-b border-light/15 pb-4 text-sm uppercase tracking-widest">
+                    <span class="text-terracotta">(01)</span><span class="text-light/80">Sobre a banda</span>
+                </p>
+
+                <div class="mt-12 grid gap-12 lg:grid-cols-2 lg:items-center">
+                    <div data-reveal>
+                        <!-- ✏️ AÇÃO: edite o título da seção -->
+                        <h2 id="sobre-titulo" class="font-display font-soft text-4xl leading-tight font-black md:text-5xl lg:text-6xl">
+                            Uma banda inteira dentro da cabeça de <span class="text-terracotta">um só homem.</span>
+                        </h2>
+                        <!-- ✏️ AÇÃO: edite o texto sobre a banda -->
+                        <div class="mt-8 space-y-4 text-lg leading-relaxed text-light/85">
+                            <p>
+                                O Tame Impala nasceu em Perth, na Austrália, como o projeto de estúdio de Kevin Parker.
+                                No disco, é ele quem compõe, grava, toca quase todos os instrumentos e produz cada camada de som.
+                            </p>
+                            <p>
+                                Nos palcos, o projeto vira banda completa: luzes, fumaça e uma parede sonora que mistura
+                                rock psicodélico, synth-pop e a pista de dança.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div data-reveal class="relative mx-auto w-full max-w-md">
+                        <div aria-hidden="true" class="absolute -inset-4 bg-linear-to-br from-terracotta via-crimson to-earth opacity-60 blur-2xl animate-morph motion-reduce:animate-none"></div>
+                        <div class="relative aspect-[4/5] overflow-hidden bg-linear-to-br from-card via-terracotta to-crimson animate-morph [border-radius:60%_40%_55%_45%/50%_60%_40%_50%] motion-reduce:animate-none">
+                            <!-- ✏️ AÇÃO: foto do Kevin Parker — 900×1125 (4:5) -->
+                            <img src="" alt="Retrato de Kevin Parker, criador do Tame Impala, com luz quente de fim de tarde" class="size-full object-cover">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ficha técnica em 4 colunas -->
+                <!-- ✏️ AÇÃO: edite os dados da ficha -->
+                <dl class="mt-16 grid grid-cols-2 gap-8 lg:grid-cols-4">
+                    <div data-reveal class="border-t border-light/20 pt-4">
+                        <p class="text-xs text-light/60" aria-hidden="true">01</p>
+                        <dt class="mt-2 text-xs uppercase tracking-widest text-terracotta">Origem</dt>
+                        <dd class="mt-2">Perth, Austrália</dd>
+                    </div>
+                    <div data-reveal class="border-t border-light/20 pt-4">
+                        <p class="text-xs text-light/60" aria-hidden="true">02</p>
+                        <dt class="mt-2 text-xs uppercase tracking-widest text-terracotta">Criador</dt>
+                        <dd class="mt-2">Kevin Parker<br>Composição, gravação e produção</dd>
+                    </div>
+                    <div data-reveal class="border-t border-light/20 pt-4">
+                        <p class="text-xs text-light/60" aria-hidden="true">03</p>
+                        <dt class="mt-2 text-xs uppercase tracking-widest text-terracotta">Início</dt>
+                        <dd class="mt-2 font-display font-soft text-5xl font-black">2007</dd>
+                    </div>
+                    <div data-reveal class="border-t border-light/20 pt-4">
+                        <p class="text-xs text-light/60" aria-hidden="true">04</p>
+                        <dt class="mt-2 text-xs uppercase tracking-widest text-terracotta">Som</dt>
+                        <dd class="mt-2">Rock psicodélico<br>Synth-pop<br>Eletrônico</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <!-- Onda: escuro → claro -->
+        <div aria-hidden="true" class="bg-light text-earth">
+            <svg class="block h-12 w-full md:h-20" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="currentColor" d="M0 0h1440v32c-240 40-480 48-720 16S240 8 0 40Z"/></svg>
+        </div>
+
+        <!-- ===================== 4. DISCOGRAFIA (claro) ===================== -->
+        <section id="discografia" data-section aria-labelledby="disco-titulo" class="py-16 md:py-24">
+            <div class="mx-auto max-w-6xl px-6 md:px-8">
+                <p class="flex items-center gap-4 border-b border-earth/15 pb-4 text-sm uppercase tracking-widest">
+                    <span class="text-crimson">(02)</span><span class="text-earth/80">Discografia</span>
+                </p>
+
+                <div class="mt-12 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+                    <h2 id="disco-titulo" data-reveal class="font-display font-soft text-4xl leading-tight font-black md:text-5xl lg:text-6xl">
+                        Cinco álbuns, <span class="text-terracotta">cinco viagens.</span>
+                    </h2>
+                    <p data-reveal class="max-w-sm text-lg leading-relaxed text-earth/80">
+                        Do fuzz cheio de reverb ao groove eletrônico: escolha uma porta de entrada e aperte o play.
+                    </p>
+                </div>
+
+                <!-- Grid: 2 col. no md, 3 col. no lg; a última linha fica centralizada -->
+                <div class="mt-16 grid gap-8 md:grid-cols-4 lg:grid-cols-6">
+
+                    <!-- Card: Innerspeaker -->
+                    <article data-reveal class="group flex flex-col gap-4 rounded-card bg-card p-4 text-earth shadow-lg shadow-earth/10 transition duration-700 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-terracotta/30 motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:col-span-2">
+                        <div class="relative aspect-square overflow-hidden rounded-2xl bg-linear-to-br from-terracotta via-crimson to-earth">
+                            <div aria-hidden="true" class="absolute inset-[18%] rounded-full border border-light/30"></div>
+                            <!-- ✏️ AÇÃO: capa do Innerspeaker — 1000×1000 (1:1) -->
+                            <img src="" alt="Capa do álbum Innerspeaker" class="relative size-full object-cover transition duration-700 group-hover:scale-105 motion-reduce:transition-none">
+                        </div>
+                        <div class="flex items-start justify-between gap-4 px-2">
+                            <h3 class="font-display font-soft text-2xl font-black">Innerspeaker</h3>
+                            <span class="inline-flex items-center gap-2 rounded-full border border-earth/20 px-4 py-1 text-sm font-medium text-earth">2010</span>
+                        </div>
+                        <p class="px-2 text-earth/85">A estreia: guitarras fuzz, reverb infinito e psicodelia sessentista.</p>
+                        <!-- ✏️ AÇÃO: link do álbum no Spotify -->
+                        <a href="#" aria-label="Ouvir o álbum Innerspeaker" class="mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                            <svg class="size-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg>
+                            Ouvir
+                        </a>
+                    </article>
+
+                    <!-- Card: Lonerism -->
+                    <article data-reveal class="group flex flex-col gap-4 rounded-card bg-card p-4 text-earth shadow-lg shadow-earth/10 transition duration-700 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-terracotta/30 motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:col-span-2">
+                        <div class="relative aspect-square overflow-hidden rounded-2xl bg-linear-to-br from-crimson via-terracotta to-card">
+                            <div aria-hidden="true" class="absolute inset-[18%] rounded-full border border-light/30"></div>
+                            <!-- ✏️ AÇÃO: capa do Lonerism — 1000×1000 (1:1) -->
+                            <img src="" alt="Capa do álbum Lonerism" class="relative size-full object-cover transition duration-700 group-hover:scale-105 motion-reduce:transition-none">
+                        </div>
+                        <div class="flex items-start justify-between gap-4 px-2">
+                            <h3 class="font-display font-soft text-2xl font-black">Lonerism</h3>
+                            <span class="inline-flex items-center gap-2 rounded-full border border-earth/20 px-4 py-1 text-sm font-medium text-earth">2012</span>
+                        </div>
+                        <p class="px-2 text-earth/85">Introspecção em camadas de sintetizador e baterias saturadas.</p>
+                        <!-- ✏️ AÇÃO: link do álbum no Spotify -->
+                        <a href="#" aria-label="Ouvir o álbum Lonerism" class="mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                            <svg class="size-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg>
+                            Ouvir
+                        </a>
+                    </article>
+
+                    <!-- Card: Currents -->
+                    <article data-reveal class="group flex flex-col gap-4 rounded-card bg-card p-4 text-earth shadow-lg shadow-earth/10 transition duration-700 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-terracotta/30 motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:col-span-2">
+                        <div class="relative aspect-square overflow-hidden rounded-2xl bg-linear-to-br from-earth via-crimson to-terracotta">
+                            <div aria-hidden="true" class="absolute inset-[18%] rounded-full border border-light/30"></div>
+                            <!-- ✏️ AÇÃO: capa do Currents — 1000×1000 (1:1) -->
+                            <img src="" alt="Capa do álbum Currents" class="relative size-full object-cover transition duration-700 group-hover:scale-105 motion-reduce:transition-none">
+                        </div>
+                        <div class="flex items-start justify-between gap-4 px-2">
+                            <h3 class="font-display font-soft text-2xl font-black">Currents</h3>
+                            <span class="inline-flex items-center gap-2 rounded-full border border-earth/20 px-4 py-1 text-sm font-medium text-earth">2015</span>
+                        </div>
+                        <p class="px-2 text-earth/85">A virada para o groove: baixo marcante, synth-pop e coração partido.</p>
+                        <!-- ✏️ AÇÃO: link do álbum no Spotify -->
+                        <a href="#" aria-label="Ouvir o álbum Currents" class="mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                            <svg class="size-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg>
+                            Ouvir
+                        </a>
+                    </article>
+
+                    <!-- Card: The Slow Rush -->
+                    <article data-reveal class="group flex flex-col gap-4 rounded-card bg-card p-4 text-earth shadow-lg shadow-earth/10 transition duration-700 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-terracotta/30 motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:col-span-2 lg:col-start-2">
+                        <div class="relative aspect-square overflow-hidden rounded-2xl bg-linear-to-br from-card via-terracotta to-crimson">
+                            <div aria-hidden="true" class="absolute inset-[18%] rounded-full border border-light/30"></div>
+                            <!-- ✏️ AÇÃO: capa do The Slow Rush — 1000×1000 (1:1) -->
+                            <img src="" alt="Capa do álbum The Slow Rush" class="relative size-full object-cover transition duration-700 group-hover:scale-105 motion-reduce:transition-none">
+                        </div>
+                        <div class="flex items-start justify-between gap-4 px-2">
+                            <h3 class="font-display font-soft text-2xl font-black">The Slow Rush</h3>
+                            <span class="inline-flex items-center gap-2 rounded-full border border-earth/20 px-4 py-1 text-sm font-medium text-earth">2020</span>
+                        </div>
+                        <p class="px-2 text-earth/85">Tempo e memória embalados em grooves ensolarados de pista.</p>
+                        <!-- ✏️ AÇÃO: link do álbum no Spotify -->
+                        <a href="#" aria-label="Ouvir o álbum The Slow Rush" class="mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                            <svg class="size-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg>
+                            Ouvir
+                        </a>
+                    </article>
+
+                    <!-- Card: Deadbeat -->
+                    <article data-reveal class="group flex flex-col gap-4 rounded-card bg-card p-4 text-earth shadow-lg shadow-earth/10 transition duration-700 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-terracotta/30 motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:col-span-2 md:col-start-2 lg:col-start-auto">
+                        <div class="relative aspect-square overflow-hidden rounded-2xl bg-linear-to-br from-terracotta via-earth to-crimson">
+                            <div aria-hidden="true" class="absolute inset-[18%] rounded-full border border-light/30"></div>
+                            <!-- ✏️ AÇÃO: capa do Deadbeat — 1000×1000 (1:1) -->
+                            <img src="" alt="Capa do álbum Deadbeat" class="relative size-full object-cover transition duration-700 group-hover:scale-105 motion-reduce:transition-none">
+                        </div>
+                        <div class="flex items-start justify-between gap-4 px-2">
+                            <h3 class="font-display font-soft text-2xl font-black">Deadbeat</h3>
+                            <span class="inline-flex items-center gap-2 rounded-full border border-earth/20 px-4 py-1 text-sm font-medium text-earth">2025</span>
+                        </div>
+                        <p class="px-2 text-earth/85">O mergulho mais fundo na música eletrônica e na cultura rave.</p>
+                        <!-- ✏️ AÇÃO: link do álbum no Spotify -->
+                        <a href="#" aria-label="Ouvir o álbum Deadbeat" class="mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                            <svg class="size-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg>
+                            Ouvir
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Onda: claro → escuro -->
+        <div aria-hidden="true" class="bg-earth text-light">
+            <svg class="block h-12 w-full md:h-20" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="currentColor" d="M0 0h1440v40c-240 32-480-24-720 8S240 72 0 40Z"/></svg>
+        </div>
+
+        <!-- ===================== 5. TURNÊ (escuro) ===================== -->
+        <section id="turne" data-section aria-labelledby="turne-titulo" class="relative overflow-hidden bg-earth py-16 text-light md:py-24">
+            <div aria-hidden="true" class="pointer-events-none absolute -left-32 bottom-0 size-96 bg-linear-to-tr from-crimson to-terracotta opacity-20 blur-3xl animate-blob [animation-delay:-10s] motion-reduce:animate-none"></div>
+
+            <div class="relative mx-auto max-w-6xl px-6 md:px-8">
+                <p class="flex items-center gap-4 border-b border-light/15 pb-4 text-sm uppercase tracking-widest">
+                    <span class="text-terracotta">(03)</span><span class="text-light/80">Turnê</span>
+                </p>
+
+                <div class="mt-12 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+                    <h2 id="turne-titulo" data-reveal class="font-display font-soft text-4xl leading-tight font-black md:text-5xl lg:text-6xl">
+                        Ao vivo, <span class="text-terracotta">sob as luzes.</span>
+                    </h2>
+                    <span data-reveal class="inline-flex items-center gap-2 self-start rounded-full border border-light/25 px-4 py-1 text-sm font-medium text-light md:self-auto">
+                        <span aria-hidden="true" class="size-2 rounded-full bg-terracotta"></span>
+                        Datas e locais fictícios
+                    </span>
+                </div>
+
+                <!-- ✏️ AÇÃO: edite datas, cidades, locais e links de ingresso -->
+                <ul class="mt-12 flex flex-col gap-4">
+                    <li data-reveal class="grid grid-cols-[auto_1fr] items-center gap-4 rounded-card border border-light/10 bg-light/5 p-4 transition duration-500 hover:border-terracotta/60 hover:bg-light/10 motion-reduce:transition-none md:grid-cols-[auto_1fr_auto] md:gap-8 md:p-6">
+                        <time datetime="2026-11-14" class="flex size-20 flex-col items-center justify-center rounded-full bg-terracotta/15 text-terracotta">
+                            <span class="font-display font-soft text-3xl leading-none font-black">14</span>
+                            <span class="text-xs uppercase tracking-widest">nov</span>
+                        </time>
+                        <div>
+                            <p class="font-display font-soft text-2xl font-bold md:text-3xl">São Paulo, BR</p>
+                            <p class="text-light/80">Arena Horizonte</p>
+                        </div>
+                        <a href="#" aria-label="Comprar ingresso para São Paulo, 14 de novembro" class="col-span-2 inline-flex items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:col-span-1">Ingressos</a>
+                    </li>
+                    <li data-reveal class="grid grid-cols-[auto_1fr] items-center gap-4 rounded-card border border-light/10 bg-light/5 p-4 transition duration-500 hover:border-terracotta/60 hover:bg-light/10 motion-reduce:transition-none md:grid-cols-[auto_1fr_auto] md:gap-8 md:p-6">
+                        <time datetime="2026-11-18" class="flex size-20 flex-col items-center justify-center rounded-full bg-terracotta/15 text-terracotta">
+                            <span class="font-display font-soft text-3xl leading-none font-black">18</span>
+                            <span class="text-xs uppercase tracking-widest">nov</span>
+                        </time>
+                        <div>
+                            <p class="font-display font-soft text-2xl font-bold md:text-3xl">Rio de Janeiro, BR</p>
+                            <p class="text-light/80">Teatro das Dunas</p>
+                        </div>
+                        <a href="#" aria-label="Comprar ingresso para Rio de Janeiro, 18 de novembro" class="col-span-2 inline-flex items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:col-span-1">Ingressos</a>
+                    </li>
+                    <li data-reveal class="grid grid-cols-[auto_1fr] items-center gap-4 rounded-card border border-light/10 bg-light/5 p-4 transition duration-500 hover:border-terracotta/60 hover:bg-light/10 motion-reduce:transition-none md:grid-cols-[auto_1fr_auto] md:gap-8 md:p-6">
+                        <time datetime="2026-11-22" class="flex size-20 flex-col items-center justify-center rounded-full bg-terracotta/15 text-terracotta">
+                            <span class="font-display font-soft text-3xl leading-none font-black">22</span>
+                            <span class="text-xs uppercase tracking-widest">nov</span>
+                        </time>
+                        <div>
+                            <p class="font-display font-soft text-2xl font-bold md:text-3xl">Buenos Aires, AR</p>
+                            <p class="text-light/80">Estadio del Sol</p>
+                        </div>
+                        <a href="#" aria-label="Comprar ingresso para Buenos Aires, 22 de novembro" class="col-span-2 inline-flex items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:col-span-1">Ingressos</a>
+                    </li>
+                    <li data-reveal class="grid grid-cols-[auto_1fr] items-center gap-4 rounded-card border border-light/10 bg-light/5 p-4 transition duration-500 hover:border-terracotta/60 hover:bg-light/10 motion-reduce:transition-none md:grid-cols-[auto_1fr_auto] md:gap-8 md:p-6">
+                        <time datetime="2026-12-03" class="flex size-20 flex-col items-center justify-center rounded-full bg-terracotta/15 text-terracotta">
+                            <span class="font-display font-soft text-3xl leading-none font-black">03</span>
+                            <span class="text-xs uppercase tracking-widest">dez</span>
+                        </time>
+                        <div>
+                            <p class="font-display font-soft text-2xl font-bold md:text-3xl">Cidade do México, MX</p>
+                            <p class="text-light/80">Foro Atardecer</p>
+                        </div>
+                        <a href="#" aria-label="Comprar ingresso para Cidade do México, 3 de dezembro" class="col-span-2 inline-flex items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:col-span-1">Ingressos</a>
+                    </li>
+                    <li data-reveal class="grid grid-cols-[auto_1fr] items-center gap-4 rounded-card border border-light/10 bg-light/5 p-4 transition duration-500 hover:border-terracotta/60 hover:bg-light/10 motion-reduce:transition-none md:grid-cols-[auto_1fr_auto] md:gap-8 md:p-6">
+                        <time datetime="2027-01-20" class="flex size-20 flex-col items-center justify-center rounded-full bg-terracotta/15 text-terracotta">
+                            <span class="font-display font-soft text-3xl leading-none font-black">20</span>
+                            <span class="text-xs uppercase tracking-widest">jan</span>
+                        </time>
+                        <div>
+                            <p class="font-display font-soft text-2xl font-bold md:text-3xl">Perth, AU</p>
+                            <p class="text-light/80">Anfiteatro Maré Alta</p>
+                        </div>
+                        <!-- Variação "esgotado" (não clicável) -->
+                        <span class="col-span-2 inline-flex items-center justify-center gap-2 rounded-full border-2 border-light/30 px-6 py-3 font-semibold text-light/80 md:col-span-1">Esgotado</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Onda: escuro → claro -->
+        <div aria-hidden="true" class="bg-light text-earth">
+            <svg class="block h-12 w-full md:h-20" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="currentColor" d="M0 0h1440v32c-240 40-480 48-720 16S240 8 0 40Z"/></svg>
+        </div>
+
+        <!-- ===================== 6. GALERIA (claro) ===================== -->
+        <section id="galeria" data-section aria-labelledby="galeria-titulo" class="py-16 md:py-24">
+            <div class="mx-auto max-w-6xl px-6 md:px-8">
+                <p class="flex items-center gap-4 border-b border-earth/15 pb-4 text-sm uppercase tracking-widest">
+                    <span class="text-crimson">(04)</span><span class="text-earth/80">Galeria</span>
+                </p>
+
+                <h2 id="galeria-titulo" data-reveal class="mt-12 font-display font-soft text-4xl leading-tight font-black md:text-5xl lg:text-6xl">
+                    Cor, fumaça e <span class="text-terracotta">luz quente.</span>
+                </h2>
+
+                <!-- ✏️ AÇÃO: troque as imagens e as legendas da galeria -->
+                <div class="mt-16 grid auto-rows-[10rem] grid-cols-2 gap-4 md:auto-rows-[14rem] md:grid-cols-4">
+                    <figure data-reveal tabindex="0" class="group relative col-span-2 row-span-2 overflow-hidden rounded-card bg-linear-to-br from-terracotta via-crimson to-earth focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta">
+                        <!-- ✏️ AÇÃO: 1200×1200 (1:1) -->
+                        <img src="" alt="Multidão iluminada por luzes laranja durante um show" class="size-full object-cover transition duration-1000 ease-out group-hover:scale-110 group-hover:rotate-1 motion-reduce:transition-none">
+                        <div aria-hidden="true" class="absolute inset-0 bg-linear-to-t from-earth/80 via-earth/0 to-earth/0 opacity-0 transition duration-700 group-hover:opacity-100 group-focus-visible:opacity-100"></div>
+                        <figcaption class="absolute inset-x-0 bottom-0 translate-y-4 p-6 font-display font-soft text-xl font-bold text-light opacity-0 transition duration-700 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 motion-reduce:transition-none">Mar de luzes</figcaption>
+                    </figure>
+                    <figure data-reveal tabindex="0" class="group relative row-span-2 overflow-hidden rounded-card bg-linear-to-br from-card via-terracotta to-crimson focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta">
+                        <!-- ✏️ AÇÃO: 800×1600 (1:2, vertical) -->
+                        <img src="" alt="Guitarrista de perfil contra fundo de fumaça avermelhada" class="size-full object-cover transition duration-1000 ease-out group-hover:scale-110 group-hover:rotate-1 motion-reduce:transition-none">
+                        <div aria-hidden="true" class="absolute inset-0 bg-linear-to-t from-earth/80 via-earth/0 to-earth/0 opacity-0 transition duration-700 group-hover:opacity-100 group-focus-visible:opacity-100"></div>
+                        <figcaption class="absolute inset-x-0 bottom-0 translate-y-4 p-6 font-display font-soft text-xl font-bold text-light opacity-0 transition duration-700 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 motion-reduce:transition-none">Fumaça</figcaption>
+                    </figure>
+                    <figure data-reveal tabindex="0" class="group relative overflow-hidden rounded-card bg-linear-to-br from-crimson to-earth focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta">
+                        <!-- ✏️ AÇÃO: 800×800 (1:1) -->
+                        <img src="" alt="Close de pedais de efeito de guitarra no palco" class="size-full object-cover transition duration-1000 ease-out group-hover:scale-110 group-hover:rotate-1 motion-reduce:transition-none">
+                        <div aria-hidden="true" class="absolute inset-0 bg-linear-to-t from-earth/80 via-earth/0 to-earth/0 opacity-0 transition duration-700 group-hover:opacity-100 group-focus-visible:opacity-100"></div>
+                        <figcaption class="absolute inset-x-0 bottom-0 translate-y-4 p-6 font-display font-soft text-xl font-bold text-light opacity-0 transition duration-700 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 motion-reduce:transition-none">Pedais</figcaption>
+                    </figure>
+                    <figure data-reveal tabindex="0" class="group relative overflow-hidden rounded-card bg-linear-to-br from-terracotta to-card focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta">
+                        <!-- ✏️ AÇÃO: 800×800 (1:1) -->
+                        <img src="" alt="Sintetizador analógico iluminado por luz âmbar" class="size-full object-cover transition duration-1000 ease-out group-hover:scale-110 group-hover:rotate-1 motion-reduce:transition-none">
+                        <div aria-hidden="true" class="absolute inset-0 bg-linear-to-t from-earth/80 via-earth/0 to-earth/0 opacity-0 transition duration-700 group-hover:opacity-100 group-focus-visible:opacity-100"></div>
+                        <figcaption class="absolute inset-x-0 bottom-0 translate-y-4 p-6 font-display font-soft text-xl font-bold text-light opacity-0 transition duration-700 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 motion-reduce:transition-none">Sintetizadores</figcaption>
+                    </figure>
+                    <figure data-reveal tabindex="0" class="group relative col-span-2 overflow-hidden rounded-card bg-linear-to-br from-earth via-crimson to-terracotta focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta">
+                        <!-- ✏️ AÇÃO: 1600×800 (2:1, horizontal) -->
+                        <img src="" alt="Palco visto de longe ao pôr do sol em um festival" class="size-full object-cover transition duration-1000 ease-out group-hover:scale-110 group-hover:rotate-1 motion-reduce:transition-none">
+                        <div aria-hidden="true" class="absolute inset-0 bg-linear-to-t from-earth/80 via-earth/0 to-earth/0 opacity-0 transition duration-700 group-hover:opacity-100 group-focus-visible:opacity-100"></div>
+                        <figcaption class="absolute inset-x-0 bottom-0 translate-y-4 p-6 font-display font-soft text-xl font-bold text-light opacity-0 transition duration-700 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 motion-reduce:transition-none">Pôr do sol no festival</figcaption>
+                    </figure>
+                    <figure data-reveal tabindex="0" class="group relative col-span-2 overflow-hidden rounded-card bg-linear-to-br from-card via-terracotta to-earth focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta">
+                        <!-- ✏️ AÇÃO: 1600×800 (2:1, horizontal) -->
+                        <img src="" alt="Projeções psicodélicas coloridas no telão do palco" class="size-full object-cover transition duration-1000 ease-out group-hover:scale-110 group-hover:rotate-1 motion-reduce:transition-none">
+                        <div aria-hidden="true" class="absolute inset-0 bg-linear-to-t from-earth/80 via-earth/0 to-earth/0 opacity-0 transition duration-700 group-hover:opacity-100 group-focus-visible:opacity-100"></div>
+                        <figcaption class="absolute inset-x-0 bottom-0 translate-y-4 p-6 font-display font-soft text-xl font-bold text-light opacity-0 transition duration-700 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 motion-reduce:transition-none">Projeções</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- Onda: claro → escuro -->
+        <div aria-hidden="true" class="bg-earth text-light">
+            <svg class="block h-12 w-full md:h-20" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="currentColor" d="M0 0h1440v40c-240 32-480-24-720 8S240 72 0 40Z"/></svg>
+        </div>
+    </main>
+
+    <!-- ===================== 7. FOOTER (escuro) ===================== -->
+    <footer class="relative overflow-hidden bg-earth pt-16 pb-8 text-light md:pt-24">
+        <div class="mx-auto max-w-6xl px-6 md:px-8">
+            <div class="flex flex-col gap-12 md:flex-row md:items-end md:justify-between">
+                <div>
+                    <p class="font-display font-soft text-5xl leading-none font-black md:text-7xl">
+                        Aperte o <span class="text-terracotta">play.</span>
+                    </p>
+                    <p class="mt-4 max-w-sm text-light/80">O pôr do sol continua tocando. Escolha um álbum e deixe a onda te levar.</p>
+                </div>
+
+                <!-- ✏️ AÇÃO: troque os href pelos perfis oficiais da banda -->
+                <ul class="flex gap-4" aria-label="Redes sociais">
+                    <li>
+                        <a href="#" aria-label="Instagram" class="inline-flex size-12 items-center justify-center rounded-full border-2 border-light/25 transition duration-500 hover:border-terracotta hover:bg-terracotta focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none">
+                            <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" aria-label="YouTube" class="inline-flex size-12 items-center justify-center rounded-full border-2 border-light/25 transition duration-500 hover:border-terracotta hover:bg-terracotta focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none">
+                            <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" aria-label="Spotify" class="inline-flex size-12 items-center justify-center rounded-full border-2 border-light/25 transition duration-500 hover:border-terracotta hover:bg-terracotta focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none">
+                            <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7 9.5c3.5-1 7-.6 10 1M7.5 13c3-.8 5.6-.4 8 .8M8 16.2c2.2-.5 4.2-.3 6 .6"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" aria-label="TikTok" class="inline-flex size-12 items-center justify-center rounded-full border-2 border-light/25 transition duration-500 hover:border-terracotta hover:bg-terracotta focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none">
+                            <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.5 2.5 2.5 4.5 5 5"/></svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="mt-16 flex flex-col gap-4 border-t border-light/15 pt-8 text-sm text-light/80 md:flex-row md:items-center md:justify-between">
+                <p class="inline-flex items-center gap-2 self-start rounded-full border border-light/25 px-4 py-1 font-medium text-light">
+                    <span aria-hidden="true" class="size-2 rounded-full bg-terracotta"></span>
+                    Projeto de fã, não oficial. Sem vínculo com a banda ou suas gravadoras.
+                </p>
+                <!-- ✏️ AÇÃO: edite os créditos com seu nome e links -->
+                <p>© <span data-year>2026</span> · Feito por <a href="#" class="underline decoration-terracotta underline-offset-4 hover:text-terracotta focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta">Thiago Andrade</a> · Tailwind CSS + Fraunces</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
