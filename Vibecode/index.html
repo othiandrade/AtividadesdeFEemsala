@@ -91,7 +91,6 @@
     <!-- ===================== 1. NAVBAR ===================== -->
     <header data-navbar class="fixed inset-x-0 top-0 z-50 border-b border-earth/10 bg-light/80 backdrop-blur-md transition-shadow duration-500 data-[scrolled=true]:shadow-lg data-[scrolled=true]:shadow-earth/10">
         <nav aria-label="Navegação principal" class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4 md:px-8">
-            <!-- ✏️ AÇÃO: logo em texto (não usar o logo oficial da banda) -->
             <a href="#inicio" class="group flex items-center gap-2 rounded-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta" aria-label="Tame Impala, voltar ao início">
                 <span aria-hidden="true" class="size-6 rounded-full bg-linear-to-br from-terracotta via-crimson to-earth transition duration-700 group-hover:rotate-180 motion-reduce:transition-none"></span>
                 <span class="font-display font-soft text-xl font-black tracking-tight">Tame Impala</span>
@@ -106,8 +105,7 @@
             </ul>
 
             <div class="flex items-center gap-2">
-                <!-- ✏️ AÇÃO: troque o href pelo link do artista no Spotify/Apple Music -->
-                <a href="https://open.spotify.com/intl-pt/artist/5INjqkS1o8h1imAzPqGZBb" aria-label="Ouvir agora: ir para a discografia" class="hidden items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:inline-flex">
+                <a href="https://open.spotify.com/intl-pt/artist/5INjqkS1o8h1imAzPqGZBb" target="_blank" rel="noopener noreferrer" aria-label="Ouvir Tame Impala no Spotify (abre em nova aba)" class="hidden items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:inline-flex">
                     Ouvir agora
                 </a>
 
@@ -126,7 +124,7 @@
                 <li><a href="#turne" data-menu-link class="block rounded-card px-4 py-3 font-display font-soft text-2xl font-bold transition-colors hover:bg-card/50 focus-visible:outline-2 focus-visible:outline-terracotta">Turnê</a></li>
                 <li><a href="#galeria" data-menu-link class="block rounded-card px-4 py-3 font-display font-soft text-2xl font-bold transition-colors hover:bg-card/50 focus-visible:outline-2 focus-visible:outline-terracotta">Galeria</a></li>
                 <li class="pt-4">
-                    <a href="https://open.spotify.com/intl-pt/artist/5INjqkS1o8h1imAzPqGZBb" data-menu-link aria-label="Ouvir agora: ir para a discografia" class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                    <a href="https://open.spotify.com/intl-pt/artist/5INjqkS1o8h1imAzPqGZBb" target="_blank" rel="noopener noreferrer" data-menu-link aria-label="Ouvir Tame Impala no Spotify (abre em nova aba)" class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0">
                         Ouvir agora
                     </a>
                 </li>
@@ -146,14 +144,12 @@
             </div>
 
             <div class="relative mx-auto max-w-6xl px-6 md:px-8">
-                <!-- ✏️ AÇÃO: edite o título principal -->
-                <h1 id="hero-titulo" data-reveal class="font-display font-soft text-7xl leading-none font-black tracking-tight md:text-9xl lg:text-[11rem]">
+                <h1 id="hero-titulo" data-reveal class="font-display font-soft text-7xl leading-[0.95] font-black tracking-tight md:text-9xl lg:text-[11rem]">
                     <span class="block">Tame</span>
-                    <span class="block bg-linear-to-br from-terracotta via-crimson to-earth bg-clip-text text-transparent">Impala</span>
+                    <span class="block pb-4 bg-linear-to-br from-terracotta via-crimson to-earth bg-clip-text text-transparent md:pb-6 lg:pb-8">Impala</span>
                 </h1>
 
                 <div data-reveal class="mt-8 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-                    <!-- ✏️ AÇÃO: edite o subtítulo -->
                     <p class="max-w-md text-xl leading-relaxed text-earth/80 md:text-2xl">
                         Uma viagem psicodélica, de Perth para o mundo, em ondas de sintetizador, fuzz e pôr do sol.
                     </p>
@@ -167,11 +163,11 @@
 
                 <div data-reveal class="mt-8 flex flex-wrap gap-4">
                     <!-- ✏️ AÇÃO: troque o href pelo link do artista no Spotify -->
-                    <a href="https://open.spotify.com/intl-pt/artist/5INjqkS1o8h1imAzPqGZBb" aria-label="Ouvir agora: ir para a discografia" class="inline-flex items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                    <a href="https://open.spotify.com/intl-pt/artist/5INjqkS1o8h1imAzPqGZBb" target="_blank" rel="noopener noreferrer" aria-label="Ouvir Tame Impala no Spotify (abre em nova aba)" class="inline-flex items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0">
                         <svg class="size-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg>
                         Ouvir agora
                     </a>
-                    <a href="https://www.tameimpala.com/" aria-label="Ver datas da turnê" class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-earth px-6 py-3 font-semibold text-earth transition duration-500 ease-out hover:bg-earth hover:text-light focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none">
+                    <a href="https://www.tameimpala.com/" target="_blank" rel="noopener noreferrer" aria-label="Ver datas da turnê (abre em nova aba)" class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-earth px-6 py-3 font-semibold text-earth transition duration-500 ease-out hover:bg-earth hover:text-light focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none">
                         Ver turnê
                     </a>
                 </div>
@@ -248,11 +244,9 @@
 
                 <div class="mt-12 grid gap-12 lg:grid-cols-2 lg:items-center">
                     <div data-reveal>
-                        <!-- ✏️ AÇÃO: edite o título da seção -->
                         <h2 id="sobre-titulo" class="font-display font-soft text-4xl leading-tight font-black md:text-5xl lg:text-6xl">
                             Uma banda inteira dentro da cabeça de <span class="text-terracotta">um só homem.</span>
                         </h2>
-                        <!-- ✏️ AÇÃO: edite o texto sobre a banda -->
                         <div class="mt-8 space-y-4 text-lg leading-relaxed text-light/85">
                             <p>
                                 O Tame Impala nasceu em Perth, na Austrália, como o projeto de estúdio de Kevin Parker.
@@ -275,7 +269,6 @@
                 </div>
 
                 <!-- Ficha técnica em 4 colunas -->
-                <!-- ✏️ AÇÃO: edite os dados da ficha -->
                 <dl class="mt-16 grid grid-cols-2 gap-8 lg:grid-cols-4">
                     <div data-reveal class="border-t border-light/20 pt-4">
                         <p class="text-xs text-light/60" aria-hidden="true">01</p>
@@ -338,7 +331,7 @@
                         </div>
                         <p class="px-2 text-earth/85">A estreia: guitarras fuzz, reverb infinito e psicodelia sessentista.</p>
                         <!-- ✏️ AÇÃO: link do álbum no Spotify -->
-                        <a href="https://open.spotify.com/album/1DNSmmRLfv97Yjq7MTFWng?si=vQqB8nLBRxa2W263JQV6Lw" aria-label="Ouvir o álbum Innerspeaker" class="mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                        <a href="https://open.spotify.com/album/1DNSmmRLfv97Yjq7MTFWng?si=vQqB8nLBRxa2W263JQV6Lw" target="_blank" rel="noopener noreferrer" aria-label="Ouvir o álbum Innerspeaker (abre em nova aba)" class="mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0">
                             <svg class="size-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg>
                             Ouvir
                         </a>
@@ -357,7 +350,7 @@
                         </div>
                         <p class="px-2 text-earth/85">Introspecção em camadas de sintetizador e baterias saturadas.</p>
                         <!-- ✏️ AÇÃO: link do álbum no Spotify -->
-                        <a href="https://open.spotify.com/album/3C2MFZ2iHotUQOSBzdSvM7?si=pXth57_qRI-O3rZzmm7TtQ" aria-label="Ouvir o álbum Lonerism" class="mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                        <a href="https://open.spotify.com/album/3C2MFZ2iHotUQOSBzdSvM7?si=pXth57_qRI-O3rZzmm7TtQ" target="_blank" rel="noopener noreferrer" aria-label="Ouvir o álbum Lonerism (abre em nova aba)" class="mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0">
                             <svg class="size-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg>
                             Ouvir
                         </a>
@@ -376,7 +369,7 @@
                         </div>
                         <p class="px-2 text-earth/85">A virada para o groove: baixo marcante, synth-pop e coração partido.</p>
                         <!-- ✏️ AÇÃO: link do álbum no Spotify -->
-                        <a href="https://open.spotify.com/album/79dL7FLiJFOO0EoehUHQBv?si=zNLSIw4JTb6xhBBXW-_2eA" aria-label="Ouvir o álbum Currents" class="mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                        <a href="https://open.spotify.com/album/79dL7FLiJFOO0EoehUHQBv?si=zNLSIw4JTb6xhBBXW-_2eA" target="_blank" rel="noopener noreferrer" aria-label="Ouvir o álbum Currents (abre em nova aba)" class="mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0">
                             <svg class="size-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg>
                             Ouvir
                         </a>
@@ -395,7 +388,7 @@
                         </div>
                         <p class="px-2 text-earth/85">Tempo e memória embalados em grooves ensolarados de pista.</p>
                         <!-- ✏️ AÇÃO: link do álbum no Spotify -->
-                        <a href="https://open.spotify.com/album/31qVWUdRrlb8thMvts0yYL?si=CKmVEsTbReKE1vv6g17nqg" aria-label="Ouvir o álbum The Slow Rush" class="mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                        <a href="https://open.spotify.com/album/31qVWUdRrlb8thMvts0yYL?si=CKmVEsTbReKE1vv6g17nqg" target="_blank" rel="noopener noreferrer" aria-label="Ouvir o álbum The Slow Rush (abre em nova aba)" class="mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0">
                             <svg class="size-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg>
                             Ouvir
                         </a>
@@ -414,7 +407,7 @@
                         </div>
                         <p class="px-2 text-earth/85">O mergulho mais fundo na música eletrônica e na cultura rave.</p>
                         <!-- ✏️ AÇÃO: link do álbum no Spotify -->
-                        <a href="https://open.spotify.com/album/5WulAOx9ilWy1h8UGZ1gkI?si=o4MWHlkzQeWyLR8T4Egixg" aria-label="Ouvir o álbum Deadbeat" class="mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                        <a href="https://open.spotify.com/album/5WulAOx9ilWy1h8UGZ1gkI?si=o4MWHlkzQeWyLR8T4Egixg" target="_blank" rel="noopener noreferrer" aria-label="Ouvir o álbum Deadbeat (abre em nova aba)" class="mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0">
                             <svg class="size-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg>
                             Ouvir
                         </a>
@@ -447,7 +440,6 @@
                     </span>
                 </div>
 
-                <!-- ✏️ AÇÃO: edite datas, cidades, locais e links de ingresso -->
                 <ul class="mt-12 flex flex-col gap-4">
                     <li data-reveal class="grid grid-cols-[auto_1fr] items-center gap-4 rounded-card border border-light/10 bg-light/5 p-4 transition duration-500 hover:border-terracotta/60 hover:bg-light/10 motion-reduce:transition-none md:grid-cols-[auto_1fr_auto] md:gap-8 md:p-6">
                         <time datetime="2026-11-14" class="flex size-20 flex-col items-center justify-center rounded-full bg-terracotta/15 text-terracotta">
@@ -458,7 +450,7 @@
                             <p class="font-display font-soft text-2xl font-bold md:text-3xl">São Paulo, BR</p>
                             <p class="text-light/80">Arena Horizonte</p>
                         </div>
-                        <a href="#" aria-label="Comprar ingresso para São Paulo, 14 de novembro" class="col-span-2 inline-flex items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:col-span-1">Ingressos</a>
+                        <a href="https://www.tameimpala.com/" target="_blank" rel="noopener noreferrer" aria-label="Comprar ingresso para São Paulo, 14 de novembro (abre em nova aba)" class="col-span-2 inline-flex items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:col-span-1">Ingressos</a>
                     </li>
                     <li data-reveal class="grid grid-cols-[auto_1fr] items-center gap-4 rounded-card border border-light/10 bg-light/5 p-4 transition duration-500 hover:border-terracotta/60 hover:bg-light/10 motion-reduce:transition-none md:grid-cols-[auto_1fr_auto] md:gap-8 md:p-6">
                         <time datetime="2026-11-18" class="flex size-20 flex-col items-center justify-center rounded-full bg-terracotta/15 text-terracotta">
@@ -469,7 +461,7 @@
                             <p class="font-display font-soft text-2xl font-bold md:text-3xl">Rio de Janeiro, BR</p>
                             <p class="text-light/80">Teatro das Dunas</p>
                         </div>
-                        <a href="#" aria-label="Comprar ingresso para Rio de Janeiro, 18 de novembro" class="col-span-2 inline-flex items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:col-span-1">Ingressos</a>
+                        <a href="https://www.tameimpala.com/" target="_blank" rel="noopener noreferrer" aria-label="Comprar ingresso para Rio de Janeiro, 18 de novembro (abre em nova aba)" class="col-span-2 inline-flex items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:col-span-1">Ingressos</a>
                     </li>
                     <li data-reveal class="grid grid-cols-[auto_1fr] items-center gap-4 rounded-card border border-light/10 bg-light/5 p-4 transition duration-500 hover:border-terracotta/60 hover:bg-light/10 motion-reduce:transition-none md:grid-cols-[auto_1fr_auto] md:gap-8 md:p-6">
                         <time datetime="2026-11-22" class="flex size-20 flex-col items-center justify-center rounded-full bg-terracotta/15 text-terracotta">
@@ -480,7 +472,7 @@
                             <p class="font-display font-soft text-2xl font-bold md:text-3xl">Buenos Aires, AR</p>
                             <p class="text-light/80">Estadio del Sol</p>
                         </div>
-                        <a href="#" aria-label="Comprar ingresso para Buenos Aires, 22 de novembro" class="col-span-2 inline-flex items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:col-span-1">Ingressos</a>
+                        <a href="https://www.tameimpala.com/" target="_blank" rel="noopener noreferrer" aria-label="Comprar ingresso para Buenos Aires, 22 de novembro (abre em nova aba)" class="col-span-2 inline-flex items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:col-span-1">Ingressos</a>
                     </li>
                     <li data-reveal class="grid grid-cols-[auto_1fr] items-center gap-4 rounded-card border border-light/10 bg-light/5 p-4 transition duration-500 hover:border-terracotta/60 hover:bg-light/10 motion-reduce:transition-none md:grid-cols-[auto_1fr_auto] md:gap-8 md:p-6">
                         <time datetime="2026-12-03" class="flex size-20 flex-col items-center justify-center rounded-full bg-terracotta/15 text-terracotta">
@@ -491,7 +483,7 @@
                             <p class="font-display font-soft text-2xl font-bold md:text-3xl">Cidade do México, MX</p>
                             <p class="text-light/80">Foro Atardecer</p>
                         </div>
-                        <a href="#" aria-label="Comprar ingresso para Cidade do México, 3 de dezembro" class="col-span-2 inline-flex items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:col-span-1">Ingressos</a>
+                        <a href="https://www.tameimpala.com/" target="_blank" rel="noopener noreferrer" aria-label="Comprar ingresso para Cidade do México, 3 de dezembro (abre em nova aba)" class="col-span-2 inline-flex items-center justify-center gap-2 rounded-full bg-crimson px-6 py-3 font-semibold text-light shadow-lg shadow-crimson/30 transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:shadow-terracotta/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:col-span-1">Ingressos</a>
                     </li>
                     <li data-reveal class="grid grid-cols-[auto_1fr] items-center gap-4 rounded-card border border-light/10 bg-light/5 p-4 transition duration-500 hover:border-terracotta/60 hover:bg-light/10 motion-reduce:transition-none md:grid-cols-[auto_1fr_auto] md:gap-8 md:p-6">
                         <time datetime="2027-01-20" class="flex size-20 flex-col items-center justify-center rounded-full bg-terracotta/15 text-terracotta">
@@ -524,8 +516,6 @@
                 <h2 id="galeria-titulo" data-reveal class="mt-12 font-display font-soft text-4xl leading-tight font-black md:text-5xl lg:text-6xl">
                     Cor, fumaça e <span class="text-terracotta">luz quente.</span>
                 </h2>
-
-                <!-- ✏️ AÇÃO: troque as imagens e as legendas da galeria -->
                 <div class="mt-16 grid auto-rows-[10rem] grid-cols-2 gap-4 md:auto-rows-[14rem] md:grid-cols-4">
                     <figure data-reveal tabindex="0" class="group relative col-span-2 row-span-2 overflow-hidden rounded-card bg-linear-to-br from-terracotta via-crimson to-earth focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta">
                         <!-- ✏️ AÇÃO: 1200×1200 (1:1) -->
@@ -583,21 +573,19 @@
                     </p>
                     <p class="mt-4 max-w-sm text-light/80">O pôr do sol continua tocando. Escolha um álbum e deixe a onda te levar.</p>
                 </div>
-
-                <!-- ✏️ AÇÃO: troque os href pelos perfis oficiais da banda -->
                 <ul class="flex gap-4" aria-label="Redes sociais">
                     <li>
-                        <a href="https://www.instagram.com/tameimpala" aria-label="Instagram" class="inline-flex size-12 items-center justify-center rounded-full border-2 border-light/25 transition duration-500 hover:border-terracotta hover:bg-terracotta focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none">
+                        <a href="https://www.instagram.com/tameimpala" target="_blank" rel="noopener noreferrer" aria-label="Instagram (abre em nova aba)" class="inline-flex size-12 items-center justify-center rounded-full border-2 border-light/25 transition duration-500 hover:border-terracotta hover:bg-terracotta focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none">
                             <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.youtube.com/@tameimpala" aria-label="YouTube" class="inline-flex size-12 items-center justify-center rounded-full border-2 border-light/25 transition duration-500 hover:border-terracotta hover:bg-terracotta focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none">
+                        <a href="https://www.youtube.com/@tameimpala" target="_blank" rel="noopener noreferrer" aria-label="YouTube (abre em nova aba)" class="inline-flex size-12 items-center justify-center rounded-full border-2 border-light/25 transition duration-500 hover:border-terracotta hover:bg-terracotta focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none">
                             <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"/></svg>
                         </a>
                     </li>
                     <li>
-                        <a href="https://open.spotify.com/artist/5INjqkS1o8h1imAzPqGZBb" aria-label="Spotify" class="inline-flex size-12 items-center justify-center rounded-full border-2 border-light/25 transition duration-500 hover:border-terracotta hover:bg-terracotta focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none">
+                        <a href="https://open.spotify.com/artist/5INjqkS1o8h1imAzPqGZBb" target="_blank" rel="noopener noreferrer" aria-label="Spotify (abre em nova aba)" class="inline-flex size-12 items-center justify-center rounded-full border-2 border-light/25 transition duration-500 hover:border-terracotta hover:bg-terracotta focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-terracotta motion-reduce:transition-none">
                             <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7 9.5c3.5-1 7-.6 10 1M7.5 13c3-.8 5.6-.4 8 .8M8 16.2c2.2-.5 4.2-.3 6 .6"/></svg>
                         </a>
                     </li>
