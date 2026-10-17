@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo Tailwind</title>
+  <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  
+  <nav class="bg-gray-900 text-white px-6 py-4 flex items-center justify-center md:justify-between">
+    <span class="hidden md:flex text-lg font-bold">Tailwind Demo</span>
+    <ul class="flex gap-6 text-md">
+      <li><a class="hover:text-cyan-400" href="#grid">Grid</a></li>
+      <li><a class="hover:text-cyan-400" href="#componentes">Componentes</a></li>
+      <li><a class="hover:text-cyan-400" href="#images">Formulário</a></li>
+    </ul>
+  </nav>
+  
+  <div class="max-w-5xl mx-auto px-6 py-12">
+    <header class="text-center mb-12">
+      <h1 class="text-4xl font-bold mb-2">Tailwind na prática</h1>
+      <p class="text-gray-500 text-lg">
+        Classes utilitárias
+      </p>
+    </header>
+    
+    <!-- ---------------------------
+    GRID LAYOUT
+    Tailwind não tem um "sistema de 12 colunas" próprio como o Bootstrap.
+    Usa-se diretamente Flexbox ou CSS Grid nativo via classes utilitárias:
+    grid, grid-cols-3, gap-4, etc.
+    --------------------------- -->
+    <section id="grid" class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4">Layout com classes utilitárias - Grid</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="p-4 bg-purple-500 text-white rounded text-center">grid-cols-3</div>
+        <div class="p-4 bg-purple-500 text-white rounded text-center">grid-cols-3</div>
+        <div class="p-4 bg-purple-500 text-white rounded text-center">grid-cols-3</div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+        <div class="p-4 bg-purple-900 text-white rounded text-center md:col-span-2">col-span-2</div>
+        <div class="p-4 bg-purple-900 text-white rounded text-center">col-span-1</div>
+      </div>
+    </section>
+
+    <section id="images" class="mb-12">
+      <div class="flex gap-7">
+        <div class="w-1/2">
+          <img class="grayscale blur-xs hover:filter-none transition duration-500 ease-in-out"
+          src="https://picsum.photos/500/300" alt="Imagem gerada aleatoriamente">
+        </div>
+
+        <div class="w-1/2">
+          <img class=""
+          src="https://picsum.photos/500/300" alt="Imagem gerada aleatoriamente">
+        </div>
+      </div>
+    </section>
+
+    <section id="animation" class="mb-12">
+      <div class="flex items-center gap-7">
+        <i class="animate-ping [animation-duration:3s] text-3xl bx bx-heart"></i>
+        <i class="animate-bounce [animation-duration:1s] text-6xl bx bx-arrow-down-stroke"></i>
+        <i class="animate-spin [animation-duration:2s] text-5xl bx bx-circle-dashed-half"></i>
+      </div>
+    </section>
+  </div>
+  
+  <footer class="bg-gray-900 text-white text-center py-4">
+    Demo Tailwind CSS
+  </footer>
+  
+</body>
+</html>
